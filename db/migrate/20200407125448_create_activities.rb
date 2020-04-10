@@ -3,7 +3,7 @@ class CreateActivities < ActiveRecord::Migration[6.0]
     create_table :activities do |t|
       t.integer :user_id
       t.string :name
-      t.string :type
+      t.string :activity_type
       t.string :description
       t.integer :kudos_count
       t.integer :comment_count

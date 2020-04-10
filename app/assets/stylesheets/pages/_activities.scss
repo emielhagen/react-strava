@@ -3,9 +3,19 @@
 }
 
 .activity-list {
-  width: 70%;
+  width: 60%;
 }
 
 .activity-map {
-  width: 30%;
+  width: 40%;
+}
+
+.activity-stats {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 5px;
+  p {
+    margin-right: 10px;
+  }
 }

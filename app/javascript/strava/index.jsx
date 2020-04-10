@@ -7,23 +7,19 @@ import ReduxPromise from 'redux-promise';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import App from './components/app';
+
 import activitiesReducer from './reducers/activities_reducer';
+import selectedActivityReducer from './reducers/selected_activity_reducer';
 
 const stravaContainer = document.getElementById('strava_app');
 
-// TODO: create dummy file with some activities, at least 1
-const activities = []
-
-const initialState = {
-  activities: activities
-};
-
 const reducers = combineReducers({
-  activities: activitiesReducer
+  activities: activitiesReducer,
+  selectedActivity: selectedActivityReducer
 });
 
 const middlewares = applyMiddleware(logger, ReduxPromise);
-const store = createStore(reducers, initialState, middlewares);
+const store = createStore(reducers, {}, middlewares);
 
 ReactDOM.render(
   <Provider store={store}>

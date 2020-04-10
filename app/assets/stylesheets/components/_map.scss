@@ -1,0 +1,15 @@
+.mapboxgl-canvas-container {
+  position: relative;
+  height: 90vh;
+  margin-top: 10px;
+}
+
+
+.mapboxgl-ctrl-attrib-inner {
+  position: absolute;
+  bottom: 5px;
+  font-size: 10px;
+  a {
+    color: black;
+  }
+}
