@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :omniauthable
 
   has_many :activities
 
@@ -17,6 +17,10 @@ class User < ApplicationRecord
                          access_token: auth['credentials']['token'],
                          refresh_token: auth['credentials']['refresh_token'],
                          expires_at: auth['credentials']['expires_at'])
+    elsif DateTime.strptime(user.expires_at.to_s,'%s') < DateTime.now
+      user.update(access_token: auth['credentials']['token'],
+                  refresh_token: auth['credentials']['refresh_token'],
+                  expires_at: auth['credentials']['expires_at'])
     end
     user
   end

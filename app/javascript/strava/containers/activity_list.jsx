@@ -13,7 +13,7 @@ class ActivityList extends Component {
   render() {
     return(
       <div className="activity-list">
-        {this.props.activities.map(act => <Activity activity={act} key={act.name} /> )}
+        {this.props.activities.map(act => <Activity activity={act} key={act.strava_activity_id} /> )}
       </div>
     )
   }

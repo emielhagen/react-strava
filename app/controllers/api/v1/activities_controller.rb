@@ -1,13 +1,25 @@
 class Api::V1::ActivitiesController < ApplicationController
   def index
     if current_user.uid.nil?
-      activities = Activity.where(user: current_user)
+      activities = Activity.where(user: current_user).sort_by(&:start_date).reverse
     else
-      activities = Activity.where(strava_uid: current_user.uid)
+      activities = Activity.where(strava_uid: current_user.uid).sort_by(&:start_date).reverse
     end
     render json: activities
   end
 
-  def create
+  def update
+    activity = Activity.find(params['id'])
+    activity.update(strong_params)
+    StravaApi.new(current_user).update_activity(activity)
+    activities = Activity.where(strava_uid: current_user.uid).sort_by(&:start_date).reverse
+
+    render json: activities
+  end
+
+  private
+
+  def strong_params
+    params.require(:activity).permit(:name, :description)
   end
 end

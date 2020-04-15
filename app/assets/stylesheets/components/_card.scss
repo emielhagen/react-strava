@@ -9,10 +9,16 @@
   margin: 10px;
 }
 
+.card-product.selected {
+  border-style: solid;
+  border-color: #ff0000;
+  border-width: 1px;
+}
+
 .card-product img {
   height: 100%;
   width: 120px;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 .card-product h2 {

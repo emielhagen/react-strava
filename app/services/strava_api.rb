@@ -17,13 +17,18 @@ class StravaApi
   end
 
   # Not yet used
-  def get_athlete_activity
-    response = HTTParty.get("https://www.strava.com/api/v3/activity/#{activity.strava_activity_id}", headers: {"Authorization" => "Bearer #{access_token}" })
+  def get_athlete_activity(activity)
+    response = HTTParty.get("https://www.strava.com/api/v3/activities/#{activity.strava_activity_id}", headers: {"Authorization" => "Bearer #{access_token}" })
+  end
+
+  def update_activity(activity)
+    body = { "description": activity.description, "name": activity.name }
+    response = HTTParty.put("https://www.strava.com/api/v3/activities/#{activity.strava_activity_id}", headers: { "Authorization" => "Bearer #{access_token}" }, body: body )
   end
 
   def map_response_to_activities(response)
     response.each do |activity|
-      Activity.where(create_activity_hash(activity)).first_or_create
+      Activity.where(create_activity_hash(activity)).first_or_create(name: activity['name'], description: activity['description'])
     end
   end
 
@@ -32,7 +37,6 @@ class StravaApi
       user: user,
       strava_uid: activity['athlete']['id'],
       strava_activity_id: activity['id'],
-      name: activity['name'],
       activity_type: activity['type'],
       kudos_count: activity['kudos_count'],
       comment_count: activity['comment_count'],
@@ -50,7 +54,8 @@ class StravaApi
       average_temp: activity['average_temp'],
       average_watts: activity['average_watts'],
       average_heart_rate: activity['average_heartrate'],
-      max_heart_rate: activity['max_heartrate']
+      max_heart_rate: activity['max_heartrate'],
+      polyline: activity['map']['summary_polyline']
     }
   end
 end
