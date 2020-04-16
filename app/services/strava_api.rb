@@ -2,19 +2,18 @@
 # Api documentation: https://developers.strava.com/docs/authentication/
 class StravaApi
   include HTTParty
-  attr_reader :access_token, :refresh_token, :uid, :user
+  attr_reader :user
 
   def initialize(user)
-    @access_token = user.access_token
-    @refresh_token = user.refresh_token
-    @uid = user.uid
     @user = user
   end
 
   def get_athlete_activities(page = 1)
     page_nr = page
     response = HTTParty.get("https://www.strava.com/api/v3/athletes/#{user.uid}/activities?page=#{page_nr}",
-                            headers: { "Authorization" => "Bearer #{access_token}" })
+                            headers: { "Authorization" => "Bearer #{user.access_token}" })
+
+    # TODO: Error handling
     return [] if response.code != 200
 
     map_response_to_activities(response)
@@ -26,13 +25,13 @@ class StravaApi
   # Not yet used
   def get_athlete_activity(activity)
     HTTParty.get("https://www.strava.com/api/v3/activities/#{activity.strava_activity_id}",
-                 headers: { "Authorization" => "Bearer #{access_token}" })
+                 headers: { "Authorization" => "Bearer #{user.access_token}" })
   end
 
   def update_activity(activity)
     body = { "description": activity.description, "name": activity.name }
     HTTParty.put("https://www.strava.com/api/v3/activities/#{activity.strava_activity_id}",
-                 headers: { "Authorization" => "Bearer #{access_token}" }, body: body)
+                 headers: { "Authorization" => "Bearer #{user.access_token}" }, body: body)
   end
 
   def map_response_to_activities(response)

@@ -16,7 +16,7 @@ class ActivityMap extends Component {
   }
 
   componentDidMount() {
-    // See .env for accesstoken, still to fix process.env undefined issue
+    // TODO: Fix process.env undefined issue, in the meantime empty to prevent pushing api key to github
     mapboxgl.accessToken = '';
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
