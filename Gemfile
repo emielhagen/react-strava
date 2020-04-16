@@ -19,6 +19,7 @@ gem 'webpacker'
 gem 'strava-ruby-client'
 gem "omniauth-strava"
 gem 'httparty'
+gem 'rubocop', '~> 0.81.0', require: false
 
 group :development do
   gem 'web-console', '>= 3.3.0'

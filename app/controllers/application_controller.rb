@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit([:provider, :uid])
+    devise_parameter_sanitizer.permit(%i[provider uid])
   end
 end

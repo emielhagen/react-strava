@@ -22,7 +22,7 @@ class ActivityMap extends Component {
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [5.2913, 52.1326],
-      zoom: 6
+      zoom: 4
     });
     this.map.scrollZoom.disable();
   }

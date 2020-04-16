@@ -53,6 +53,15 @@ class Activity extends Component {
     this.setState({ edit: !this.state.edit });
   }
 
+  renderData(activity) {
+    return(
+      <div>
+        <h2>{activity.name}</h2>
+        <p>{activity.description ? activity.description : 'No description'}</p>
+      </div>
+    )
+  }
+
   render() {
     const editActivity = this.state.edit;
     const { activity } = this.props;
@@ -62,8 +71,7 @@ class Activity extends Component {
         <img src={this.cardImage(activity.activity_type)}/>
         <i className={selected ? editActivity ? 'fas fa-times edit-icon-x' : 'far fa-edit edit-icon' : '\' '} onClick={this.handleEdit}></i>
         <div className="card-product-infos">
-          { editActivity ? <ActivityForm activity={activity} /> : <h2>{activity.name}</h2> }
-          { editActivity ? '' : <p>{activity.description ? activity.description : 'No description'}</p> }
+          { editActivity ? <ActivityForm activity={activity} selectedActivity={this.props.selectedActivity} /> : this.renderData(activity) }
           <p>{new Date(activity.start_date).toLocaleDateString('en-GB')}</p>
           <div className="activity-stats">
             <p>{(activity.distance/1000).toFixed(2)} km</p>
