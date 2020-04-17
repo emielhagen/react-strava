@@ -5,6 +5,7 @@
 }
 
 .left-pane {
+  margin-top: 7vh;
   text-align: center;
   line-height: 3px;
   display: flex;
@@ -21,6 +22,7 @@
 }
 
 .right-pane {
+  margin-top: 7vh;
   position: relative;
   height: 93vh;
   width: 70%;
@@ -35,8 +37,6 @@
 }
 
 .card-home {
-  box-shadow: -5px -6px 63px 19px #FC5200;
-  border-top: 1px solid #FFFFFF;
   position: absolute;
   bottom: 0px;
   width: 100%;
