@@ -11,7 +11,7 @@ $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
+$primary:    #fc5200;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
@@ -23,3 +23,18 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+
+// Style anchor elements
+$link-color:                white !default;
+$link-decoration:           none !default;
+$link-hover-color:          darken($link-color, 15%) !default;
+$link-hover-decoration:     none !default;
+// Darken percentage for links with `.text-*` class (e.g. `.text-success`)
+$emphasized-link-hover-darken-percentage: 15% !default;
+
+// Buttons
+$input-btn-font-family:       'Didact Gothic', sans-serif !default;
+$input-btn-padding-y:         .075rem !default;
+$input-btn-padding-x:         2.75rem !default;
+
+

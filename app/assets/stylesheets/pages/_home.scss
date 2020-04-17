@@ -1,4 +1,56 @@
 // Specific CSS for your home-page
 .app {
   margin-right: 20px;
+  justify-content: space-evenly;
+}
+
+.left-pane {
+  text-align: center;
+  line-height: 3px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Didact Gothic', sans-serif;
+  color: white;
+  height: 93vh;
+  width: 30%;
+  background-color: #FC5200;
+}
+
+.left-pane-text {
+  margin-top: 15vh;
+}
+
+.right-pane {
+  position: relative;
+  height: 93vh;
+  width: 70%;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.home-background {
+  display: flex;
+}
+
+.card-home {
+  box-shadow: -5px -6px 63px 19px #FC5200;
+  border-top: 1px solid #FFFFFF;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.strava-image {
+  height: 200px;
+  margin-top: 15%;
+}
+
+ul {
+  list-style: none;
 }

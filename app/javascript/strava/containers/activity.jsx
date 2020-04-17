@@ -13,13 +13,13 @@ class Activity extends Component {
   cardImage(type) {
     switch(type) {
       case 'Run':
-        return 'https://thumbs.dreamstime.com/b/running-man-sport-run-active-fitness-exercise-athlete-variety-sport-movements-hipsters-flat-cartoon-style-side-view-running-150508966.jpg';
+        return 'https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160901559/62757103-vector-color-cartoon-illustration-running-shoes-on-white-background.jpg';
       case 'Ride':
-        return 'https://cdn.clipart.email/f8443b8a49fd7de5265aeb9c53f21d32_a-man-riding-a-mountain-bike-cartoon-clipart-vector-_809-1024.jpeg';
+        return 'https://media.istockphoto.com/vectors/bicycle-isolated-vector-illustration-flat-cartoon-bike-vector-id586713616';
       case 'Swim':
-        return "https://cdn.friendlystock.com/wp-content/uploads/2018/07/1-man-swimming-in-the-water-cartoon-clipart.jpg";
+        return "https://getdrawings.com/vectors/goggles-vector-33.jpg";
       default:
-        return "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg";
+        return "https://media.istockphoto.com/vectors/set-of-vector-cartoon-gym-icons-vector-id528630296";
     }
   }
 

@@ -1,11 +1,13 @@
 .mapboxgl-canvas-container {
   position: relative;
   height: 90vh;
-  margin-top: 10px;
 }
 
 .mapboxgl-canvas {
   position: fixed;
+  margin-left: 15px;
+  background: #FC5200;
+  padding: 5px;
 }
 
 
@@ -16,4 +18,11 @@
   a {
     color: black;
   }
+}
+
+.map-panel {
+  display: flex;
+  height: 100%;
+  width: 30%;
+  margin-top: 10px;
 }

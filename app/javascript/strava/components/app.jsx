@@ -6,7 +6,9 @@ const App = (props) => {
   return (
     <div className="app">
       <ActivityList />
-      <ActivityMap />
+      <div className="map-panel">
+        <ActivityMap />
+      </div>
     </div>
   );
 };

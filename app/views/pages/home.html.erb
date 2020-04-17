@@ -1,5 +1,24 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-background">
+  <div class="left-pane">
+    <div class="left-pane-text">
+      <h1>Welcome</h1>
+      <p>Link with strava</p>
+      <p>Get all your activities</p>
+      <p>See your routes</p>
+      <p>Edit your data easily</p>
+    </div>
 
-<%= link_to 'Activities', activities_path %>
+  </div>
+  <div class="right-pane">
+    <img src="https://pngimage.net/wp-content/uploads/2018/06/strava-logo-png-4.png" alt="" class='strava-image'>
+    <div class="card-home">
+      <button type="button" class="btn btn-primary">
+        <%= link_to 'Show my activities', activities_path %>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
 
