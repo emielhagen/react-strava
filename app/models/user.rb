@@ -19,7 +19,7 @@ class User < ApplicationRecord
     user
   end
 
-  def user_hash(auth_hash)
+  def self.user_hash(auth_hash)
     {
       provider: auth_hash['provider'],
       uid: auth_hash['uid'],
