@@ -7,15 +7,22 @@ import ReduxPromise from 'redux-promise';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import App from './components/app';
+import ConnectApp from './components/connect_app';
 
 import activitiesReducer from './reducers/activities_reducer';
 import selectedActivityReducer from './reducers/selected_activity_reducer';
+import friendsReducer from './reducers/friends_reducer';
+import usersReducer from './reducers/users_reducer';
+import incomingRequestsReducer from './reducers/incoming_requests_reducer';
 
 const stravaContainer = document.getElementById('strava_app');
 
 const reducers = combineReducers({
   activities: activitiesReducer,
-  selectedActivity: selectedActivityReducer
+  selectedActivity: selectedActivityReducer,
+  friends: friendsReducer,
+  users: usersReducer,
+  incomingRequests: incomingRequestsReducer
 });
 
 const middlewares = applyMiddleware(logger, ReduxPromise);
@@ -26,6 +33,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path="/activities" exact component={App} />
+        <Route path="/connect_friends" exact component={ConnectApp} />
       </Switch>
     </BrowserRouter>
   </Provider>,

@@ -8,8 +8,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :activities, only: [:index, :update]
+      resources :users, only: [:index, :update]
     end
   end
+
+  get '/connect_friends', to: 'activities#index'
 
 
   resources :activities, only: :index

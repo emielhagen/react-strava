@@ -9,6 +9,11 @@
   margin: 10px;
 }
 
+p.friend-request-title {
+  position: absolute;
+  left: 37%;
+}
+
 .card-product.selected {
   border-style: solid;
   border-color: #FC5200;
@@ -40,8 +45,9 @@
 }
 
 .devise-card {
+  position: absolute;
   width: 80%;
   padding: 50px;
   border: 1px solid gray;
-  margin: 10px 10%;
+  margin: 100px 10%;
 }

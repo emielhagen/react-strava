@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+gem 'has_friendship'
 gem 'strava-ruby-client'
 gem "omniauth-strava"
 gem 'httparty'

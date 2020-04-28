@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :omniauthable
 
   has_many :activities
+  has_friendship
 
   def self.from_omniauth(auth)
     user = User.find_by(provider: auth['provider'], uid: auth['uid'])
@@ -44,5 +45,18 @@ class User < ApplicationRecord
 
   def password_required?
     super && provider.blank?
+  end
+
+  def handle_request(user, request)
+    case request
+    when 'accept_request'
+      return if friends.include?(user)
+
+      accept_request(user)
+    when 'decline_request'
+      return if requested_friends.exclude?(user)
+
+      decline_request(user)
+    end
   end
 end

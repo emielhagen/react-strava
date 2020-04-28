@@ -1,13 +1,21 @@
 import React from 'react';
-import ActivityList from '../containers/activity_list';
+import { Link } from 'react-router-dom';
+import { ActivityList } from '../containers/activity_list';
 import ActivityMap from '../containers/activity_map';
 
-const App = (props) => {
+const App = () => {
   return (
-    <div className="app">
-      <ActivityList />
-      <div className="map-panel">
-        <ActivityMap />
+    <div>
+      <Link to={`/connect_friends`}>
+        <div className='btn btn-primary find-friends'>
+          Find and connect to your friends!
+        </div>
+      </Link>
+      <div className="app">
+        <ActivityList />
+        <div className="map-panel">
+          <ActivityMap />
+        </div>
       </div>
     </div>
   );

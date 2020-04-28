@@ -1,32 +1,20 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchActivities } from '../actions/index';
 
 import Activity from './activity';
 
-class ActivityList extends Component {
-  componentDidMount() {
-    this.props.fetchActivities()
-  }
+export const ActivityList = () => {
+  const dispatch = useDispatch();
+  const { activities } = useSelector(state => ({ activities: state.activities }))
 
-  render() {
-    return(
-      <div className="activity-list">
-        {this.props.activities.map(act => <Activity activity={act} key={act.strava_activity_id} /> )}
-      </div>
-    )
-  }
+  useEffect(() => {
+    dispatch(fetchActivities());
+  }, [activities.length])
+
+  return(
+    <div className="activity-list">
+      {activities.map(act => <Activity activity={act} key={act.strava_activity_id} /> )}
+    </div>
+  )
 }
-
-function mapStateToProps(state) {
-  return {
-    activities: state.activities
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchActivities }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ActivityList);
