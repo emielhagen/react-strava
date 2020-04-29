@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { connectFriend } from '../actions/index';
 
 function Friend(props) {
@@ -8,7 +9,7 @@ function Friend(props) {
   const rem_style = {display: props.status === 'friends' ? '' : 'none'}
   const { friend } = props;
 
-  function handleClick() {
+  function handleAdd() {
     dispatch(connectFriend(props.friend.id, 'friend_request'));
   }
 
@@ -18,12 +19,14 @@ function Friend(props) {
 
   return(
     <div className="card-product">
-      <img src={friend.profile_pic} alt=""/>
+      <Link to={`/activities/${props.friend.id}`}>
+        <img src={friend.profile_pic} alt=""/>
+      </Link>
       <div className="card-product-infos">
         <p>{friend.email}</p>
         <p>{friend.username}</p>
         <p>{friend.uid}</p>
-        <button className="btn btn-primary add-friend" style={add_style} onClick={handleClick}>
+        <button className="btn btn-primary add-friend" style={add_style} onClick={handleAdd}>
           <i className="fas fa-plus-square"></i>
           Add friend
         </button>

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsers, fetchFriends, fetchIncomingRequests } from '../actions';
 import Friend from './friend';
 import IncomingRequest from './incoming_request';
+import FriendForm from './friend_form';
 
 export const FriendList = () => {
   const dispatch = useDispatch();
@@ -22,10 +23,10 @@ export const FriendList = () => {
     <div>
       <h1>Your friends</h1>
       {friends.map(fr => <Friend friend={fr} status='friends' key={fr.id} />)}
-      <h1>Outstanding requests</h1>
       <h1>Incoming requests</h1>
       {incoming_requests.map(fr => <IncomingRequest friend={fr} key={fr.id} />)}
       <h1>Find users</h1>
+      <FriendForm />
       {users.map(usr => <Friend friend={usr} status='users' key={usr.id} />)}
     </div>
   )

@@ -3,7 +3,7 @@
 }
 
 .activity-list {
-  margin-top: 12vh;
+  margin-top: 8vh;
   width: 60%;
 }
 
@@ -18,5 +18,14 @@
   bottom: 5px;
   p {
     margin-right: 10px;
+  }
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  &:hover {
+    color: black;
+    text-decoration: none;
   }
 }

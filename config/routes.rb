@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   get '/connect_friends', to: 'activities#index'
-
+  get '/activities/:id', to: 'activities#index'
 
   resources :activities, only: :index
 end

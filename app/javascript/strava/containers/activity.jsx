@@ -66,10 +66,12 @@ class Activity extends Component {
     const editActivity = this.state.edit;
     const { activity } = this.props;
     const selected = (activity === this.props.selectedActivity);
+    const testVar = this.props.allow_edit && selected
+
     return(
       <div className={selected ? 'card-product selected' : 'card-product'} onClick={this.handleClick}>
         <img src={this.cardImage(activity.activity_type)}/>
-        <i className={selected ? editActivity ? 'fas fa-times edit-icon-x' : 'far fa-edit edit-icon' : '\' '} onClick={this.handleEdit}></i>
+        <i className={testVar ? editActivity ? 'fas fa-times edit-icon-x' : 'far fa-edit edit-icon' : '\' '} onClick={this.handleEdit}></i>
         <div className="card-product-infos">
           { editActivity ? <ActivityForm activity={activity} selectedActivity={this.props.selectedActivity} /> : this.renderData(activity) }
           <p>{new Date(activity.start_date).toLocaleDateString('en-GB')}</p>

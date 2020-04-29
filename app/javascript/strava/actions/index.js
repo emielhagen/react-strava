@@ -3,9 +3,10 @@ export const FETCH_ACTIVITIES = 'FETCH_ACTIVITIES';
 export const FETCH_FRIENDS = 'FETCH_FRIENDS';
 export const FETCH_USERS = 'FETCH_USERS';
 export const FETCH_INCOMING_REQUESTS = 'FETCH_INCOMING_REQUESTS';
+export const FIND_USERS = 'FIND_USERS';
 
-export function fetchActivities() {
-  const promise = fetch('/api/v1/activities', { credentials: "same-origin" })
+export function fetchActivities(user_id) {
+  const promise = fetch(`/api/v1/activities?user_id=${user_id}`, { credentials: "same-origin" })
     .then(response => response.json());
   return {
     type: FETCH_ACTIVITIES,
@@ -68,6 +69,13 @@ export function fetchUsers() {
   return {
     type: FETCH_USERS,
     payload: promise
+  }
+}
+
+export function findUser(query) {
+  return {
+    type: FIND_USERS,
+    payload: query
   }
 }
 

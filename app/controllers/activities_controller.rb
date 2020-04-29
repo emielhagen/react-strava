@@ -4,6 +4,5 @@ class ActivitiesController < ApplicationController
 
     @user = User.find(params[:friend_id])
     current_user.handle_request(@user, params[:request])
-
   end
 end

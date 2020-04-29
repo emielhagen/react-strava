@@ -32,6 +32,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
+        <Route path="/activities/:user" exact component={App} />
         <Route path="/activities" exact component={App} />
         <Route path="/connect_friends" exact component={ConnectApp} />
       </Switch>

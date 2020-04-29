@@ -4,17 +4,17 @@ import { fetchActivities } from '../actions/index';
 
 import Activity from './activity';
 
-export const ActivityList = () => {
+export const ActivityList = (props) => {
   const dispatch = useDispatch();
   const { activities } = useSelector(state => ({ activities: state.activities }))
 
   useEffect(() => {
-    dispatch(fetchActivities());
+    dispatch(fetchActivities(props.user_id ? props.user_id : ''));
   }, [activities.length])
 
   return(
     <div className="activity-list">
-      {activities.map(act => <Activity activity={act} key={act.strava_activity_id} /> )}
+      {activities.map(act => <Activity activity={act} key={act.strava_activity_id} allow_edit={props.user_id ? false : true} /> )}
     </div>
   )
 }
