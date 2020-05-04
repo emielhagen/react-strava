@@ -16,8 +16,8 @@ class ActivityMap extends Component {
   }
 
   componentDidMount() {
-    // TODO: Fix process.env undefined issue, in the meantime empty to prevent pushing api key to github
-    mapboxgl.accessToken = '';
+    const mapElement = document.getElementById('strava_app');
+    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/streets-v11',

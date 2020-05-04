@@ -36,17 +36,16 @@ class StravaApi
 
   def map_response_to_activities(response)
     response.each do |activity|
-      Activity.where(activity_hash(activity)).first_or_create(name: activity['name'])
+      Activity.where(find_activity_hash(activity)).first_or_create(create_activity_hash(activity))
     end
   end
 
-  def activity_hash(activity)
+  def create_activity_hash(activity)
     {
-      user: user, strava_uid: activity['athlete']['id'],
-      strava_activity_id: activity['id'],
-      activity_type: activity['type'],
+      name: activity['name'],
       kudos_count: activity['kudos_count'],
       comment_count: activity['comment_count'],
+      athlete_count: activity['athlete_count'],
       distance: activity['distance'],
       moving_time: activity['moving_time'],
       start_date: activity['start_date'],
@@ -54,7 +53,6 @@ class StravaApi
       start_lng: activity['start_longitude'],
       end_lat: activity['end_latlng']&.first,
       end_lng: activity['end_latlng']&.second,
-      athlete_count: activity['athlete_count'],
       average_speed: activity['average_speed'],
       max_speed: activity['max_speed'],
       average_cadence: activity['average_cadence'],
@@ -63,6 +61,14 @@ class StravaApi
       average_heart_rate: activity['average_heartrate'],
       max_heart_rate: activity['max_heartrate'],
       polyline: activity['map']['summary_polyline']
+    }
+  end
+
+  def find_activity_hash(activity)
+    {
+      user: user, strava_uid: activity['athlete']['id'],
+      strava_activity_id: activity['id'],
+      activity_type: activity['type']
     }
   end
 end

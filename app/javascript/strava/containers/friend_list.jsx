@@ -17,7 +17,7 @@ export const FriendList = () => {
     dispatch(fetchIncomingRequests());
     dispatch(fetchUsers());
     dispatch(fetchFriends());
-  }, [friends.length, users.length, incoming_requests.length]);
+  }, [friends.length, users.length]);
 
   return(
     <div>

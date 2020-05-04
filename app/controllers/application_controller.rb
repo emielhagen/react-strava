@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def set_friend_requests
     return if current_user.nil?
 
-    @requested_friends = current_user.requested_friends.positive? ? current_user.requested_friends.count : ''
+    @requested_friends = current_user.requested_friends.count.positive? ? current_user.requested_friends.count : ''
   end
 
   def configure_permitted_parameters
